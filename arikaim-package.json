@@ -1,0 +1,15 @@
+{
+    "title": "Storage",
+    "name": "storage",
+    "package-type": "module",
+    "type": "package",
+    "description": "Storage filesystem drivers.",
+    "version": "1.0.0",
+    "repository": "https://github.com/arikaim/storage-module.git",
+    "require": {
+        "composer": [
+            "league/flysystem-aws-s3-v3"
+        ]
+    },
+    "help": "https://flysystem.thephpleague.com"  
+}

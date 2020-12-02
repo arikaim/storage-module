@@ -1,0 +1,20 @@
+{
+    "name": "arikaim/storage-module",
+    "description": "Arikam Storage Module",
+    "keywords": ["Module", "Arikaim Storage module"],
+    "type": "arikaim-module",
+    "license": "GPL-3.0-or-later",
+    "authors": [{
+        "name": "Konstantin Atanasov",
+        "email": "info@arikaim.com",
+        "homepage": "http://arikaim.com"
+    }],
+    "require": {
+        "php": ">=7.1",
+        "arikaim/installer": "*",
+        "league/flysystem-aws-s3-v3": "^1.0.28"       
+    },
+    "extra": {       
+        "path": "storage"
+    }
+}

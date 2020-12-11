@@ -32,6 +32,7 @@ class Storage extends Module
     {
         $this->installDriver('Arikaim\\Modules\\Storage\\Drivers\\FtpDriver');       
         $this->installDriver('Arikaim\\Modules\\Storage\\Drivers\\DoSpacesDriver');       
+        $this->installDriver('Arikaim\\Modules\\Storage\\Drivers\\AwsS3Driver');    
 
         return true;
     }

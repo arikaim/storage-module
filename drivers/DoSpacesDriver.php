@@ -52,7 +52,7 @@ class DoSpacesDriver implements DriverInterface, StorageDriverInterface
      */
     public function __construct()
     {
-        $this->setDriverParams('do-spaces','flysystem','DO spaces filesystem','Driver for Digital Ocean spaces storage filesystem.');       
+        $this->setDriverParams('do-spaces','flysystem','Digital Ocean Spaces','Driver for Digital Ocean spaces storage filesystem.');       
     }
 
     /**

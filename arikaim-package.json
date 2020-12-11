@@ -4,7 +4,7 @@
     "package-type": "module",
     "type": "package",
     "description": "Storage filesystem drivers.",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "repository": "https://github.com/arikaim/storage-module.git",
     "require": {
         "composer": [

@@ -52,7 +52,7 @@ class AwsS3Driver implements DriverInterface, StorageDriverInterface
      */
     public function __construct()
     {
-        $this->setDriverParams('aws','flysystem','AwsS3 filesystem','Driver for AWS S3 storage filesystem.');       
+        $this->setDriverParams('aws','flysystem','AWS S3','Driver for AWS S3 storage filesystem.');       
     }
 
     /**
@@ -174,7 +174,8 @@ class AwsS3Driver implements DriverInterface, StorageDriverInterface
         $properties->property('bucket_name',function($property) {
             $property
                 ->title('Bucket name')
-                ->type('text');                
+                ->type('text')
+                ->default('');                
         });
     }
 }

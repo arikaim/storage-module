@@ -51,7 +51,7 @@ class FtpDriver implements DriverInterface, StorageDriverInterface
      */
     public function __construct()
     {
-        $this->setDriverParams('ftp','flysystem','Ftp filesystem','Driver for ftp storage filesystem');       
+        $this->setDriverParams('ftp','flysystem','Ftp','Driver for ftp storage filesystem');       
     }
 
     /**

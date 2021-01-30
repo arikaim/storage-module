@@ -35,7 +35,7 @@ class FtpDriver implements DriverInterface, StorageDriverInterface
     /**
      * Adapter
      *
-     * @var AdapterInterface
+     * @var AdapterInterface|object
      */
     protected $adapter = null;
 
@@ -84,7 +84,7 @@ class FtpDriver implements DriverInterface, StorageDriverInterface
      *
      * @return string
      */
-    public function getRootPath()
+    public function getRootPath(): ?string
     {
         return $this->rootPath;
     }

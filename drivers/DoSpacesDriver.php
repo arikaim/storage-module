@@ -83,9 +83,9 @@ class DoSpacesDriver implements DriverInterface, StorageDriverInterface
     /**
      * Get root path
      *
-     * @return string
+     * @return string|null
      */
-    public function getRootPath()
+    public function getRootPath(): ?string
     {
         return $this->rootPath;
     }
@@ -142,13 +142,15 @@ class DoSpacesDriver implements DriverInterface, StorageDriverInterface
             $property
                 ->title('Api Key')
                 ->type('text')
+                ->required(true)  
                 ->default('');
         });
         // secret
         $properties->property('secret',function($property) {
             $property
                 ->title('Api Secret')
-                ->type('text')           
+                ->type('text')   
+                ->required(true)          
                 ->default('');
         });
         // region

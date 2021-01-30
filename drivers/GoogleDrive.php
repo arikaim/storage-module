@@ -9,8 +9,7 @@
 */
 namespace Arikaim\Modules\Storage\Drivers;
 
-use Aws\S3\S3Client;
-use League\Flysystem\AwsS3v3\AwsS3Adapter;
+use Hypweb\Flysystem\GoogleDrive\GoogleDriveAdapter;
 use League\Flysystem\Filesystem;
 use League\Flysystem\AdapterInterface;
 
@@ -20,9 +19,9 @@ use Arikaim\Core\Storage\StorageDriverInterface;
 use Exception;
 
 /**
- * AwsS3 flysystem driver class
+ * Google drive flysystem driver class
  */
-class AwsS3Driver implements DriverInterface, StorageDriverInterface
+class GoogleDrive implements DriverInterface, StorageDriverInterface
 {   
     use Driver;
    
@@ -52,7 +51,7 @@ class AwsS3Driver implements DriverInterface, StorageDriverInterface
      */
     public function __construct()
     {
-        $this->setDriverParams('aws','flysystem','AWS S3','Driver for AWS S3 storage filesystem.');       
+        $this->setDriverParams('google-drive','flysystem','Google Drive','Driver for Google Drive filesystem.');       
     }
 
     /**
@@ -65,16 +64,15 @@ class AwsS3Driver implements DriverInterface, StorageDriverInterface
     {
         $this->rootPath = $properties->getValue('root');
 
-        $client = new S3Client([
-            'credentials' => [
-                'key'    => $properties->getValue('key'),
-                'secret' => $properties->getValue('secret'),
-            ],
-            'region'  => $properties->getValue('region'),
-            'version' => $properties->getValue('version'),
-        ]);
+        $client = new \Google_Client();
+        $client->setClientId($properties->getValue('client_id'));
+        $client->setClientSecret($properties->getValue('client_secret'));
+        $client->refreshToken($properties->getValue('refresh_roken'));
 
-        $this->adapter = new AwsS3Adapter($client,$properties->getValue('bucket_name'),$this->rootPath);
+        $service = new \Google_Service_Drive($client);
+
+        $this->adapter = new GoogleDriveAdapter($service,null);
+
         $this->filesystem = new Filesystem($this->adapter);
     }
 
@@ -136,48 +134,28 @@ class AwsS3Driver implements DriverInterface, StorageDriverInterface
     public function createDriverConfig($properties)
     {              
         // key
-        $properties->property('key',function($property) {
+        $properties->property('client_id',function($property) {
             $property
-                ->title('Api Key')
+                ->title('Client Id')
                 ->type('text')
-                ->required(true)  
+                ->required(true)
                 ->default('');
         });
         // secret
-        $properties->property('secret',function($property) {
+        $properties->property('client_secret',function($property) {
             $property
-                ->title('Api Secret')
-                ->type('text')   
-                ->required(true)          
+                ->title('Client Secret')
+                ->type('text')  
+                ->required(true)         
                 ->default('');
         });
-        // region
-        $properties->property('region',function($property) {
+        // refresh_roken
+        $properties->property('refresh_roken',function($property) {
             $property
-                ->title('Region')
-                ->type('text')           
+                ->title('Refresh Token')
+                ->type('text')     
+                ->required(true)      
                 ->default('');
-        });
-        // version
-        $properties->property('version',function($property) {
-            $property
-                ->title('Version')
-                ->type('text')
-                ->default('latest');
-        });
-        // Root path
-        $properties->property('root',function($property) {
-            $property
-                ->title('Root Path')
-                ->type('text')
-                ->default('');
-        });
-        // bucket_name
-        $properties->property('bucket_name',function($property) {
-            $property
-                ->title('Bucket name')
-                ->type('text')
-                ->default('');                
         });
     }
 }

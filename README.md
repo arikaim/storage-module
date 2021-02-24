@@ -11,7 +11,7 @@ Arikaim CMS storage filesystem drivers.
  * Digital Ocean Spaces
  * AWS S3
  * Dropbox
-  
+ * Sftp
 
 #### Requirements  
   * [Arikaim CMS](https://github.com/arikaim/arikaim)

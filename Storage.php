@@ -17,16 +17,9 @@ use Arikaim\Core\Extension\Module;
 class Storage extends Module
 {
     /**
-     * Constructor
-     */
-    public function __construct()
-    {  
-    }
-
-    /**
      * Install module
      *
-     * @return boolean
+     * @return void
      */
     public function install()
     {
@@ -34,7 +27,5 @@ class Storage extends Module
         $this->installDriver('Arikaim\\Modules\\Storage\\Drivers\\DoSpacesDriver');       
         $this->installDriver('Arikaim\\Modules\\Storage\\Drivers\\AwsS3Driver');          
         $this->installDriver('Arikaim\\Modules\\Storage\\Drivers\\DropboxDriver');    
-
-        return true;
     }
 }

@@ -199,7 +199,7 @@ class FtpDriver implements DriverInterface, StorageDriverInterface
                 ->type('boolean')
                 ->default(false)
                 ->value(false)
-                ->readonly(true);
+                ->readonly(false);
         });
     }
 }

@@ -10,7 +10,6 @@
         "homepage": "http://arikaim.com"
     }],
     "require": {
-        "php": ">=7.1",
         "arikaim/installer": "*",
         "league/flysystem-aws-s3-v3": "^1.0.28",
         "spatie/flysystem-dropbox": "^1.2.0"
